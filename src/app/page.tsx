@@ -59,10 +59,11 @@ export default async function Home() {
           <Link href="/create-room">Create Room</Link>
         </Button>
       </div>
-
-      {rooms.map((room) => {
-        return <RoomCard key={room.id} room={room} />;
-      })}
+      <div className="grid grid-cols-3 gap-4">
+        {rooms.map((room) => {
+          return <RoomCard key={room.id} room={room} />;
+        })}
+      </div>
     </main>
   );
 }
