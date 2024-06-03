@@ -1,25 +1,74 @@
 "use client";
 
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+import { Room } from "@/db/schema";
 import {
+  Call,
+  CallControls,
+  CallParticipantsList,
+  SpeakerLayout,
   StreamCall,
+  StreamTheme,
   StreamVideo,
   StreamVideoClient,
-  User,
 } from "@stream-io/video-react-sdk";
+import { useSession } from "next-auth/react";
+import { useCallback, useEffect, useState } from "react";
+import { generateTokenAction } from "./actions";
+import { useRouter } from "next/navigation";
 
-const apiKey = process.env.GETSTREAM_API_KEY || "";
-const userId = "user-id";
-const token = "authentication-token";
-const user: User = { id: userId };
+const apiKey = process.env.NEXT_PUBLIC_GET_STREAM_API_KEY!;
 
-const client = new StreamVideoClient({ apiKey, user, token });
-const call = client.call("default", "my-first-call");
-call.join({ create: true });
+export function VideoPlayer({ room }: { room: Room }) {
+  const session = useSession();
+  const [client, setClient] = useState<StreamVideoClient | null>(null);
+  const [call, setCall] = useState<Call | null>(null);
+  const router = useRouter();
 
-export const MyApp = () => {
+  useEffect(() => {
+    if (!room) return;
+    if (!session.data) {
+      return;
+    }
+    const userId = session.data.user.id;
+    const client = new StreamVideoClient({
+      apiKey,
+      user: {
+        id: userId,
+        name: session.data.user.name ?? undefined,
+        image: session.data.user.image ?? undefined,
+      },
+      tokenProvider: () => generateTokenAction(),
+    });
+    const call = client.call("default", room.id);
+    call.join({ create: true });
+    setClient(client);
+    setCall(call);
+
+    return () => {
+      call
+        .leave()
+        .then(() => client.disconnectUser())
+        .catch(console.error);
+    };
+  }, [session, room]);
+
   return (
-    <StreamVideo client={client}>
-      <StreamCall call={call}>{/* <MyVideoUI /> */}</StreamCall>
-    </StreamVideo>
+    client &&
+    call && (
+      <StreamVideo client={client}>
+        <StreamTheme>
+          <StreamCall call={call}>
+            <SpeakerLayout />
+            <CallControls
+              onLeave={() => {
+                router.push("/");
+              }}
+            />
+            <CallParticipantsList onClose={() => undefined} />
+          </StreamCall>
+        </StreamTheme>
+      </StreamVideo>
+    )
   );
-};
+}

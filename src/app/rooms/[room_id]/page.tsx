@@ -2,12 +2,11 @@ import { getRoom } from "@/services/rooms";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { GithubIcon } from "lucide-react";
+import { VideoPlayer } from "./video-player";
 
 export default async function RoomPage(props: { params: { room_id: string } }) {
   const roomId = props.params.room_id;
-
   const room = await getRoom(roomId);
-
   const tags = room?.language.split(",").map((tag) => tag.trim());
 
   if (!room) {
@@ -18,7 +17,7 @@ export default async function RoomPage(props: { params: { room_id: string } }) {
     <div className="grid grid-cols-4 min-h-screen">
       <div className="col-span-3 p-4 pr-2">
         <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-4 min-h-screen">
-          {/* <DevFinderVideo room={room} /> */} Video Player
+          <VideoPlayer room={room} />
         </div>
       </div>
 
