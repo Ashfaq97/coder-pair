@@ -15,6 +15,8 @@ import {
 import { LogInIcon, LogOutIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { poppins } from "@/app/layout";
+import YourRoomsPage from "@/app/your-rooms/page";
+import Link from "next/link";
 
 function DropDownMenu() {
   const session = useSession();
@@ -63,10 +65,19 @@ export const Header = () => {
       <div className="flex justify-between items-center">
         <div>Coder Pair</div>
 
+        <nav>
+          <Link className="hover:underline" href="/your-rooms">
+            Your Rooms
+          </Link>
+        </nav>
+
         <div className="flex gap-4 items-center">
           <div>
             <DropDownMenu />
           </div>
+          {/* <div>
+            <YourRoomsPage />
+          </div> */}
           <div>
             <ModeToggle />
           </div>
