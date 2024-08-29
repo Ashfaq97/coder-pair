@@ -1,4 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+<img width="899" alt="Screenshot 2024-08-21 at 12 06 29 PM" src="https://github.com/user-attachments/assets/5cfae3a1-ecf5-48c0-bf7e-89c1560bdedd">
+
+# Coder Pair
+
+A web application that enables users to stream classes and participate in interactive learning sessions, fostering collaboration and engagement 🖥️
+
+## Features
+
+- Programmers can search for rooms related to a particular programming language/topic and join them based on their interest
+- In each room, there is a streaming session where the streamer is live, and all of them can learn collaboratively
+- Every user can create a room only when he/she is authenticated
+- And it has a dark mode 😎
+
+## Images
+
+<img width="350" alt="Screenshot 2024-08-22 at 10 55 49 AM" src="https://github.com/user-attachments/assets/8b1bccc4-24f9-4f96-878d-28733533ae6f">
+<img width="350" alt="Screenshot 2024-08-21 at 12 07 00 PM" src="https://github.com/user-attachments/assets/126051ba-364c-47af-82cd-c83a0827bb3c">
+<img width="350" alt="Screenshot 2024-08-28 at 5 34 54 PM" src="https://github.com/user-attachments/assets/e9337d8e-973d-4228-89a9-676123afc36c">
+<img width="350" alt="Screenshot 2024-08-28 at 5 35 38 PM" src="https://github.com/user-attachments/assets/7a3d3d8e-9e6a-4d4e-814e-cdc878563b78">
+<img width="350" alt="Screenshot 2024-08-28 at 5 36 14 PM" src="https://github.com/user-attachments/assets/e47fd1c6-01f3-4dfb-a563-cc92ec3d511d">
+
+## Built With
+
+- [Next JS](https://nextjs.org/)
+- [Shadcn](https://ui.shadcn.com/)
+- [Drizzle](https://orm.drizzle.team/)
+- [Docker](https://www.docker.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## Getting Started
 
@@ -15,22 +43,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
